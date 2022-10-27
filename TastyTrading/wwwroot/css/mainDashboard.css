@@ -1,0 +1,9 @@
+﻿/************************** Main Dashboard ***************************/
+
+.container {
+    height: 100vh;
+}
+
+#stocks {
+    padding-top: 50px;
+}

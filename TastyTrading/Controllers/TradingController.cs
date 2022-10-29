@@ -26,8 +26,8 @@ namespace TastyTrading.Controllers
             var list = await _tradingDb.GetPortfolio();
 
             if (list != null) return Ok(list);
-            _log.LogInformation("Could not get all routes");
-            return NotFound("Could not get all routes");
+            _log.LogInformation("Could not get portfolio");
+            return NotFound("Could not get portfolio");
         }
 
         public async Task<ActionResult> BuyStock(Portfolio customerOrder)
@@ -48,12 +48,12 @@ namespace TastyTrading.Controllers
             return NotFound("Could not get all stocks");
         }
 
-        public async Task<bool> SellStock(int sellID)
+        public async Task<ActionResult> SellStock(int sellID)
         {
 
             var stock = await _tradingDb.SellStock(sellID);
 
-            if (stock) return Ok(stock);
+            if (stock == true) return Ok(stock);
             _log.LogInformation("Stock was not deleted");
             return NotFound("Stock was not deleted");
 
@@ -64,8 +64,8 @@ namespace TastyTrading.Controllers
             var order = await _tradingDb.GetOneOrder(orderID);
 
             if (order != null) return Ok(order);
-            _log.LogInformation("Could not get all routes");
-            return NotFound("Could not get all routes");
+            _log.LogInformation("Could not get stock");
+            return NotFound("Could not get stock");
         }
 
         public async Task<ActionResult> UpdateBuyStock(Portfolio order, int orderID)
@@ -106,8 +106,8 @@ namespace TastyTrading.Controllers
             var list = await _tradingDb.CreateTransaction(status, id, portfolio, quantity);
 
             if (list != null) return Ok(list);
-            _log.LogInformation("Could not get all transactions");
-            return NotFound("Could not get all transactions");
+            _log.LogInformation("Could not create a transaction");
+            return NotFound("Could not create a transaction");
 
         }*/
     }

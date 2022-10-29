@@ -222,5 +222,27 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        public async Task<List<Transaction>> GetAllTransactions()
+        {
+            try
+            {
+                List<Transaction> transactions = await _tradingDb.Transactions.Select(t => new Transaction
+                {
+                    Id = t.Id,
+                    Status = t.Status,
+                    CreatedAt = t.CreatedAt,
+                    Quantity = t.Quantity,
+                    OrderID = t.OrderID,
+                    Name = t.Stock.Name,
+                    Price = t.Stock.Price,
+                    UserID = t.User.Id
+                }).ToListAsync();
+                return transactions;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

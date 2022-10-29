@@ -38,5 +38,33 @@ namespace TastyTrading.DAL.Repositories
                 return null;
             }
         }
+
+        public async Task<bool> BuyStock(Portfolio customerOrder)
+        {
+            try
+            {
+
+                var newOrder = new Portfolio();
+                newOrder.Symbol = customerOrder.Stock.Symbol;
+                newOrder.Name = customerOrder.Stock.Name;
+                newOrder.Price = customerOrder.Stock.Price;
+                newOrder.Quantity = customerOrder.Quantity;
+                newOrder.PersonId = 1;
+
+                // TODO : Lage en transaksjon
+                // await CreateTransaction("Buy", customerOrder.Id, newOrder, customerOrder.Quantity);
+
+                _tradingDb.Portfolios.Add(newOrder);
+                await _tradingDb.SaveChangesAsync();
+                return true;
+            }
+
+
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message + "Kjøp er ikke vellykket!! ");
+                return false;
+            }
+        }
     }
 }

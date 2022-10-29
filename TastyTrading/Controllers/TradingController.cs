@@ -89,5 +89,17 @@ namespace TastyTrading.Controllers
             return NotFound("Stock was not deleted");
 
         }
+
+        // Usikker om vi trenger den i controlleren:
+
+        /*public async Task<ActionResult> CreateTransaction(string status, int id, Portfolio portfolio, double quantity)
+        {
+            var list = await _tradingDb.CreateTransaction(status, id, portfolio, quantity);
+
+            if (list != null) return Ok(list);
+            _log.LogInformation("Could not get all transactions");
+            return NotFound("Could not get all transactions");
+
+        }*/
     }
 }

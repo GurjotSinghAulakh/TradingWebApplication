@@ -67,5 +67,16 @@ namespace TastyTrading.Controllers
             _log.LogInformation("Could not get all routes");
             return NotFound("Could not get all routes");
         }
+
+        public async Task<ActionResult> UpdateBuyStock(Portfolio order, int orderID)
+        {
+
+            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+
+            if (checkStock != null) return Ok(checkStock);
+            _log.LogInformation("Stock was not updated");
+            return NotFound("Stock was not updated");
+
+        }
     }
 }

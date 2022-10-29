@@ -66,5 +66,30 @@ namespace TastyTrading.DAL.Repositories
                 return false;
             }
         }
+
+        public async Task<List<Stock>> GetStocks()
+        {
+            try
+            {
+                List<Stock> allStocks = await _tradingDb.Stocks.Select(S => new Stock
+                {
+                    Id = S.Id,
+                    Symbol = S.Symbol,
+                    Name = S.Name,
+                    Price = S.Price,
+                    Volume = S.Volume
+
+                }).ToListAsync();
+
+                return allStocks;
+            }
+
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
+        }
+
     }
 }

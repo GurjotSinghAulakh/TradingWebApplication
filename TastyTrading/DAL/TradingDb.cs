@@ -3,26 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using TastyTrading.Models;
+using System.Collections;
 
 namespace TastyTrading.DAL
 {
-    public sealed class TradingDB : DbContext
+    public sealed class TradingDb : DbContext
     {
         [ExcludeFromCodeCoverage]
-        public TradingDB(DbContextOptions<TradingDB> options) : base(options)
+        public TradingDb(DbContextOptions<TradingDb> options) : base(options)
         {
             // Creating the database
             Database.EnsureCreated();
         }
 
         // Creating tables in the database
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Portfolio> Portfolios { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        //public DbSet<Buy> Buys { get; set; }
-        //public DbSet<Sell> Sells { get; set; }
         public DbSet<Stock> Stocks { get; set; }
-        public DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

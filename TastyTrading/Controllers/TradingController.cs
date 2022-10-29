@@ -21,8 +21,6 @@ namespace TastyTrading.Controllers
             _log = log;
         }
 
-        /*************** http://localhost:9905/api/v1/Trading/GetPortfolio ********************/
-
         public async Task<ActionResult> GetPortfolio()
         {
             var list = await _tradingDb.GetPortfolio();
@@ -30,6 +28,15 @@ namespace TastyTrading.Controllers
             if (list != null) return Ok(list);
             _log.LogInformation("Could not get all routes");
             return NotFound("Could not get all routes");
+        }
+
+        public async Task<ActionResult> BuyStock(Portfolio customerOrder)
+        {
+            var product = await _tradingDb.BuyStock(customerOrder);
+
+            if (product != null) return Ok(product);
+            _log.LogInformation("Product was not found");
+            return NotFound("Product was not found");
         }
     }
 }

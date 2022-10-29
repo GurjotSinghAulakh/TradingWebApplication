@@ -91,5 +91,28 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        public async Task<bool> SellStock(int sellID)
+        {
+            try
+            {
+                Console.WriteLine("ID i backend er " + sellID);
+                Portfolio order = await _tradingDb.Portfolios.FindAsync(sellID);
+
+                _tradingDb.Portfolios.Remove(order);
+
+                // TODO : Lage en transaksjon
+                // await CreateTransaction("Sell", sellID, order, order.Quantity);
+
+                await _tradingDb.SaveChangesAsync();
+                return true;
+            }
+
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
+
     }
 }

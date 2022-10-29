@@ -188,5 +188,39 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        public async Task<bool> CreateTransaction(string status, int id, Portfolio portfolio, double quantity)
+        {
+            try
+            {
+
+                DateTime newDateTime = new DateTime();
+
+                var newTransaction = new Transaction();
+                //newTransaction.TotalPrice = portfolio.Stock.Price * portfolio.Quantity;
+                newTransaction.Status = status;
+                newTransaction.Symbol = portfolio.Symbol;
+                newTransaction.Name = portfolio.Name;
+
+
+                /*
+                newTransaction.CreatedAt = newDateTime;
+                newTransaction.OrderID = portfolio.Id;
+                newTransaction.Stock = portfolio.Stock;
+                newTransaction.User = portfolio.User;
+                newTransaction.Quantity = quantity;*/
+
+                _tradingDb.Transactions.Add(newTransaction);
+
+                await _tradingDb.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message + "Kan ikke lage en transaksjon!!");
+                return false;
+            }
+        }
+
     }
 }

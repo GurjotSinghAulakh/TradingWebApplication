@@ -127,5 +127,35 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        public async Task<bool> UpdateBuyStock(Portfolio order, int orderID)
+        {
+            try
+            {
+                var myStock = await _tradingDb.Portfolios.FindAsync(orderID);
+
+
+                //myStock.Quantity += order.Quantity;
+
+                var newOrder = new Portfolio();
+                newOrder.Symbol = order.Stock.Symbol;
+                newOrder.Name = order.Stock.Name;
+                newOrder.Price = order.Stock.Price;
+                newOrder.Quantity += order.Quantity;
+                newOrder.PersonId = 1;
+
+                _tradingDb.Portfolios.Update(newOrder);
+
+                await _tradingDb.SaveChangesAsync();
+                return true;
+            }
+
+
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message + "Aksjene er ikke oppdatert ");
+                return false;
+            }
+        }
+
     }
 }

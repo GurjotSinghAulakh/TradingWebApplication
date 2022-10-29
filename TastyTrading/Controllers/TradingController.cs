@@ -58,5 +58,14 @@ namespace TastyTrading.Controllers
             return NotFound("Stock was not deleted");
 
         }
+
+        public async Task<ActionResult> GetOneOrder(int orderID)
+        {
+            var order = await _tradingDb.GetOneOrder(orderID);
+
+            if (order != null) return Ok(order);
+            _log.LogInformation("Could not get all routes");
+            return NotFound("Could not get all routes");
+        }
     }
 }

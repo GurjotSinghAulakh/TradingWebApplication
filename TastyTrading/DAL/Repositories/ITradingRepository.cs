@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Routing;
 using TastyTrading.Models;
 
 namespace TastyTrading.DAL.Repositories
@@ -19,6 +20,5 @@ namespace TastyTrading.DAL.Repositories
 
         // Usikker om vi trenger den i controlleren:
         // Task<bool> CreateTransaction(string status, int id, Portfolio portfolio, double quantity);
-
     }
 }

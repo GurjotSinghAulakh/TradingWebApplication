@@ -90,6 +90,15 @@ namespace TastyTrading.Controllers
 
         }
 
+        public async Task<ActionResult> GetAllTransactions()
+        {
+            var transactions = await _tradingDb.GetAllTransactions();
+
+            if (transactions != null) return Ok(transactions);
+            _log.LogInformation("Could not get all transactions");
+            return NotFound("Could not get all transactions");
+        }
+
         // Usikker om vi trenger den i controlleren:
 
         /*public async Task<ActionResult> CreateTransaction(string status, int id, Portfolio portfolio, double quantity)

@@ -78,5 +78,16 @@ namespace TastyTrading.Controllers
             return NotFound("Stock was not updated");
 
         }
+
+        public async Task<ActionResult> UpdateSellStock(Portfolio order, int orderID)
+        {
+
+            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+
+            if (checkStock != null) return Ok(checkStock);
+            _log.LogInformation("Stock was not deleted");
+            return NotFound("Stock was not deleted");
+
+        }
     }
 }

@@ -20,30 +20,9 @@ namespace TastyTrading
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
-            services.AddDbContext<TradingDB>(options => options.UseSqlite("Data Source=TastyTrading.db"));
+            services.AddDbContext<TradingDb>(options => options.UseSqlite("Data Source=TastyTrading.db"));
             services.AddScoped<ITradingRepository, TradingRepository>();
-
-            
-            services.AddSession(options =>
-            {
-                options.Cookie.Name = ".AdventureWorks.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30min
-                options.Cookie.IsEssential = true;
-            });
-            services.AddDistributedMemoryCache();
-            
-            // Source: https://stackoverflow.com/questions/59199593/net-core-3-0-possible-object-cycle-was-detected-which-is-not-supported
-            // We needed a new package to handle our complicated JSON structure, seems to just work out the box like this
-            services.AddControllersWithViews()
-                .AddNewtonsoftJson(options =>
-                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                );
-            
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "wwwroot/build"; });
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,15 +36,11 @@ namespace TastyTrading
             }
 
             app.UseHttpsRedirection();
-            
+
             app.UseRouting();
-            
-            app.UseSession();
-            
+
             app.UseStaticFiles();
-            
-            app.UseSpaStaticFiles();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -76,3 +51,4 @@ namespace TastyTrading
         }
     }
 }
+

@@ -114,5 +114,18 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        public async Task<Portfolio> GetOneOrder(int orderID)
+        {
+            try
+            {
+                return await _tradingDb.Portfolios.FindAsync(orderID);
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
+        }
+
     }
 }

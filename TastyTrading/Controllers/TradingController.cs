@@ -38,5 +38,14 @@ namespace TastyTrading.Controllers
             _log.LogInformation("Product was not found");
             return NotFound("Product was not found");
         }
+
+        public async Task<ActionResult> GetStocks()
+        {
+            var list = await _tradingDb.GetStocks();
+
+            if (list != null) return Ok(list);
+            _log.LogInformation("Could not get all stocks");
+            return NotFound("Could not get all stocks");
+        }
     }
 }

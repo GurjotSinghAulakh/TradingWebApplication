@@ -14,6 +14,6 @@ namespace TastyTrading.Models
         public string Symbol { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
-        public double Volume { get; set; }
+        public string Volume { get; set; }
     }
 }

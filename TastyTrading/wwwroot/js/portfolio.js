@@ -57,15 +57,8 @@ function saveStockInfo(orderID, stockSymbol, stockName, stockPrice, maxQuantity)
 function updateBuyStock() {
     const url = "/api/v1/Trading/UpdateBuyStock";
 
-    const newStock = {
-        Id: $("#OrdreID").val(),
-        Symbol: $("#SSymbol").val(),
-        Name: $("#SName").val(),
-        Price: $("#SPrice").val()
-    }
-
     const newOrder = {
-        Stock: newStock,
+        Id: $("#OrdreID").val(),
         Person: $("#UserID").val(),
         Quantity: $("#Quantity").val()
     }
@@ -73,46 +66,33 @@ function updateBuyStock() {
     const stockID = window.location.search.substring(1);
 
     $.post(url, newOrder, function (ok) {
-        window.location.href = 'portfolio.html?' + stockID;
+        window.location.href = 'portfolio.html';
         console.log("OK")
-        console.log(stockID)
-        console.log(newOrder);
     })
         .fail(function (feil) {
             $("#feil").html("Feil på server - prøv igjen senere");
         });
-
-
 }
 
-function updateSellStock() {
-    const url = "/api/v1/Trading/SellStock";
 
-    const newStock = {
-        Id: $("#OrdreID").val(),
-        Symbol: $("#SSymbol").val(),
-        Name: $("#SName").val(),
-        Price: $("#SPrice").val()
-    }
+function updateSellStock() {
+    const url = "/api/v1/Trading/UpdateSellStock";
 
     const newOrder = {
-        Stock: newStock,
+        Id: $("#OrdreID").val(),
         Person: $("#UserID").val(),
         Quantity: $("#Quantity").val()
     }
 
     const stockID = window.location.search.substring(1);
 
-    $.post(url, { orderID: newOrder }, function (ok) {
-        window.location.href = 'portfolio.html?' + stockID;
+    $.post(url, newOrder, function (ok) {
+        window.location.href = 'portfolio.html';
         console.log("OK")
-        console.log(stockID)
-        console.log(newOrder);
     })
         .fail(function (feil) {
             $("#feil").html("Feil på server - prøv igjen senere");
         });
-
 }
 
 function sellStock(sellID) {

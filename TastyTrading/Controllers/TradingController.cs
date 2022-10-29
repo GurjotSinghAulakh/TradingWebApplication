@@ -68,10 +68,10 @@ namespace TastyTrading.Controllers
             return NotFound("Could not get stock");
         }
 
-        public async Task<ActionResult> UpdateBuyStock(Portfolio order, int orderID)
+        public async Task<ActionResult> UpdateBuyStock(Portfolio order)
         {
 
-            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+            var checkStock = await _tradingDb.UpdateBuyStock(order);
 
             if (checkStock != null) return Ok(checkStock);
             _log.LogInformation("Stock was not updated");
@@ -79,10 +79,10 @@ namespace TastyTrading.Controllers
 
         }
 
-        public async Task<ActionResult> UpdateSellStock(Portfolio order, int orderID)
+        public async Task<ActionResult> UpdateSellStock(Portfolio order)
         {
 
-            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+            var checkStock = await _tradingDb.UpdateSellStock(order);
 
             if (checkStock != null) return Ok(checkStock);
             _log.LogInformation("Stock was not deleted");
@@ -110,5 +110,14 @@ namespace TastyTrading.Controllers
             return NotFound("Could not create a transaction");
 
         }*/
+
+        public async Task<ActionResult> GetUser()
+        {
+            var person = await _tradingDb.GetUser();
+
+            if (person != null) return Ok(person);
+            _log.LogInformation("Could not find the user");
+            return NotFound("Could not find the user");
+        }
     }
 }

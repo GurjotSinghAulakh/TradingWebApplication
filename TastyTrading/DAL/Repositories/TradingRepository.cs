@@ -51,11 +51,10 @@ namespace TastyTrading.DAL.Repositories
                 newOrder.Quantity = customerOrder.Quantity;
                 newOrder.PersonId = 1;
 
-                // TODO : Lage en transaksjon
-                // await CreateTransaction("Buy", customerOrder.Id, newOrder, customerOrder.Quantity);
-
                 _tradingDb.Portfolios.Add(newOrder);
                 await _tradingDb.SaveChangesAsync();
+                // TODO : Lage en transaksjon
+                // await CreateTransaction("Buy", newOrder.Id, newOrder, customerOrder.Quantity);
                 return true;
             }
 
@@ -127,26 +126,23 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
-        public async Task<bool> UpdateBuyStock(Portfolio order, int orderID)
+        public async Task<bool> UpdateBuyStock(Portfolio order)
         {
             try
             {
-                var myStock = await _tradingDb.Portfolios.FindAsync(orderID);
+                var myStock = await _tradingDb.Portfolios.FindAsync(order.Id);
 
 
-                //myStock.Quantity += order.Quantity;
+                myStock.Quantity += order.Quantity;
 
-                var newOrder = new Portfolio();
+                /*var newOrder = new Portfolio();
                 newOrder.Symbol = order.Stock.Symbol;
                 newOrder.Name = order.Stock.Name;
                 newOrder.Price = order.Stock.Price;
                 newOrder.Quantity += order.Quantity;
-                newOrder.PersonId = 1;
-
-                _tradingDb.Portfolios.Update(newOrder);
+                newOrder.PersonId = 1;*/
 
                 await _tradingDb.SaveChangesAsync();
-                return true;
             }
 
 
@@ -155,31 +151,34 @@ namespace TastyTrading.DAL.Repositories
                 _log.LogInformation(e.Message + "Aksjene er ikke oppdatert ");
                 return false;
             }
+
+            return true;
         }
 
-        public async Task<bool> UpdateSellStock(Portfolio order, int orderID)
+        public async Task<bool> UpdateSellStock(Portfolio order)
         {
             try
             {
-                Portfolio[] checkStock = _tradingDb.Portfolios.Where(p => p.Stock.Id == orderID).ToArray();
+                var myStock = await _tradingDb.Portfolios.FindAsync(order.Id);
 
-                if (checkStock[0].Quantity > order.Quantity && order.Quantity != 0)
+                if (order.Quantity > 0)
                 {
-                    checkStock[0].Quantity -= order.Quantity;
-                    await _tradingDb.SaveChangesAsync();
-                    return true;
-                }
+                    if (myStock.Quantity == order.Quantity)
+                    {
+                        return await SellStock(order.Id);
+                    }
 
-                if (checkStock[0].Quantity == order.Quantity && order.Quantity != 0)
-                {
-                    _tradingDb.Portfolios.Remove(checkStock[0]);
-                    await _tradingDb.SaveChangesAsync();
-                    return true;
-                }
+                    if (myStock.Quantity > order.Quantity)
+                    {
+                        myStock.Quantity -= order.Quantity;
+                        await _tradingDb.SaveChangesAsync();
+                        return true;
+                    }
 
+                    return false;
+                }
                 return false;
             }
-
 
             catch (Exception e)
             {
@@ -188,26 +187,22 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
-        public async Task<bool> CreateTransaction(string status, int id, Portfolio portfolio, double quantity)
+        public async Task<bool> CreateTransaction(string status, int id, Portfolio order, double quantity)
         {
             try
             {
-
                 DateTime newDateTime = new DateTime();
 
                 var newTransaction = new Transaction();
                 //newTransaction.TotalPrice = portfolio.Stock.Price * portfolio.Quantity;
                 newTransaction.Status = status;
-                newTransaction.Symbol = portfolio.Symbol;
-                newTransaction.Name = portfolio.Name;
-
-
-                /*
+                newTransaction.Symbol = order.Symbol;
+                newTransaction.Name = order.Name;
                 newTransaction.CreatedAt = newDateTime;
-                newTransaction.OrderID = portfolio.Id;
-                newTransaction.Stock = portfolio.Stock;
-                newTransaction.User = portfolio.User;
-                newTransaction.Quantity = quantity;*/
+                newTransaction.OrderID = order.Id;
+                newTransaction.Stock = order.Stock;
+                // newTransaction.User = order.User;
+                newTransaction.Quantity = quantity;
 
                 _tradingDb.Transactions.Add(newTransaction);
 
@@ -241,6 +236,32 @@ namespace TastyTrading.DAL.Repositories
             }
             catch
             {
+                return null;
+            }
+        }
+
+        public async Task<User> GetUser()
+        {
+            try
+            {
+                User newUser = await _tradingDb.Users.FindAsync(1);
+                var getNewUser = new User()
+                {
+                    Id = newUser.Id,
+                    FirstName = newUser.FirstName,
+                    LastName = newUser.LastName,
+                    StreetAddress = newUser.StreetAddress,
+                    PostalCode = newUser.PostalCode,
+                    Postallocation = newUser.Postallocation,
+                    Phone = newUser.Phone,
+                    Email = newUser.Email
+                };
+
+                return getNewUser;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
                 return null;
             }
         }

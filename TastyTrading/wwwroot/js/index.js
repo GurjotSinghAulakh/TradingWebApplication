@@ -2,6 +2,7 @@
 
 $(function () {
     //BuyID = window.location.search.substring(1);
+
     getAllStocks();
 });
 

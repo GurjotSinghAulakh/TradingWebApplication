@@ -47,5 +47,16 @@ namespace TastyTrading.Controllers
             _log.LogInformation("Could not get all stocks");
             return NotFound("Could not get all stocks");
         }
+
+        public async Task<bool> SellStock(int sellID)
+        {
+
+            var stock = await _tradingDb.SellStock(sellID);
+
+            if (stock) return Ok(stock);
+            _log.LogInformation("Stock was not deleted");
+            return NotFound("Stock was not deleted");
+
+        }
     }
 }

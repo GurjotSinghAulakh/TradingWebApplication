@@ -18,7 +18,7 @@ namespace TastyTrading.DAL.Repositories
         Task<bool> UpdateSellStock(Portfolio order, int orderID);
         Task<List<Transaction>> GetAllTransactions();
 
-        // Usikker om vi trenger den i interface:
+        // Usikker om vi trenger den i controlleren:
         // Task<bool> CreateTransaction(string status, int id, Portfolio portfolio, double quantity);
     }
 }

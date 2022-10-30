@@ -64,11 +64,6 @@ namespace TastyTrading.DAL.Repositories
                 _tradingDb.Portfolios.Add(newOrder);
                 await _tradingDb.SaveChangesAsync();
 
-                Console.WriteLine(newOrder.Id);
-                Console.WriteLine(newOrder);
-                Console.WriteLine(customerOrder.Quantity);
-
-                // TODO : Create a transaction
                 await CreateTransaction("Buy", newOrder.Id, newOrder, customerOrder.Quantity);
                 return true;
             }
@@ -115,10 +110,9 @@ namespace TastyTrading.DAL.Repositories
 
                 _tradingDb.Portfolios.Remove(order);
 
-                // TODO : Lage en transaksjon
-                // await CreateTransaction("Sell", sellID, order, order.Quantity);
-
                 await _tradingDb.SaveChangesAsync();
+
+                await CreateTransaction("Sell", sellID, order, order.Quantity);
                 return true;
             }
 
@@ -155,6 +149,8 @@ namespace TastyTrading.DAL.Repositories
                 myStock.Quantity += order.Quantity;
 
                 await _tradingDb.SaveChangesAsync();
+                await CreateTransaction("Buy", order.Id, myStock, order.Quantity);
+
             }
             catch (Exception e)
             {
@@ -181,7 +177,9 @@ namespace TastyTrading.DAL.Repositories
                     if (myStock.Quantity > order.Quantity)
                     {
                         myStock.Quantity -= order.Quantity;
+
                         await _tradingDb.SaveChangesAsync();
+                        await CreateTransaction("Sell", order.Id, myStock, order.Quantity);
                         return true;
                     }
 
@@ -202,17 +200,16 @@ namespace TastyTrading.DAL.Repositories
         {
             try
             {
-                DateTime newDateTime = new DateTime();
+                DateTime newDateTime = DateTime.Now;
 
                 var newTransaction = new Transaction();
-                // ewTransaction.TotalPrice = portfolio.Stock.Price * portfolio.Quantity;
+                newTransaction.TotalPrice = order.Price * quantity;
                 newTransaction.Status = status;
                 newTransaction.Symbol = order.Symbol;
                 newTransaction.Name = order.Name;
                 newTransaction.CreatedAt = newDateTime;
                 newTransaction.OrderID = id;
-                newTransaction.Stock = order.Stock;
-                // newTransaction.User = order.User;
+                newTransaction.Price = order.Price;
                 newTransaction.Quantity = quantity;
 
                 _tradingDb.Transactions.Add(newTransaction);
@@ -234,18 +231,7 @@ namespace TastyTrading.DAL.Repositories
         {
             try
             {
-                List<Transaction> transactions = await _tradingDb.Transactions.Select(t => new Transaction
-                {
-                    Id = t.Id,
-                    Status = t.Status,
-                    CreatedAt = t.CreatedAt,
-                    Quantity = t.Quantity,
-                    OrderID = t.OrderID,
-                    Name = t.Stock.Name,
-                    Price = t.Stock.Price,
-                   // UserID = t.User.Id
-                }).ToListAsync();
-                return transactions;
+                return await _tradingDb.Transactions.ToListAsync();
             }
             catch
             {

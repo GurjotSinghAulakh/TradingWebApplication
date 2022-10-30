@@ -8,13 +8,12 @@ $(function () {
  * The function getAllStocks() is a function that uses the get method to get the data from the
  * api/v1/Trading/GetAllTransactions endpoint. The data is then passed to the formaterStocks() function
  */
-function getAllStocks() {
-    $.get("/api/v1/Trading/GetAllTransactions", function (stocks) {
-        console.log(stocks)
-        formaterStocks(stocks);
+function getAllTransactions() {
+    $.get("/api/v1/Trading/GetAllTransactions", function (transactions) {
+        formaterStocks(transactions);
     })
         .fail(function (feil) {
-            $("#feil").html("Feil på server - prøv igjen senere");
+            $("#myTransactions").html("Feil på server - prøv igjen senere");
         });
 }
 
@@ -24,22 +23,23 @@ function getAllStocks() {
  * @param stocks - The array of stocks that you want to display.
  */
 
-function formaterStocks(stocks) {
+function formaterStocks(transactions) {
 
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>Id</th><th>Symbol</th><th>Name</th><th>Price Per Stock</th><th>Quantity</th><th>Created_At</th><th>Totalprice</th>" +
+        "<th>Order ID</th><th>Status</th><th>Name</th><th>Symbol</th><th>Quantity</th><th>Price Per Stock</th><th>Created At</th><th>Totalprice</th>" +
         "</tr>";
 
-    for (let stock of stocks) {
+    for (let transaction of transactions) {
         ut += "<tr>" +
-            "<td>" + stock.id + "</td>" +
-            "<td>" + stock.status + "</td>" +
-            "<td>" + stock.name + "</td>" +
-            "<td>" + stock.symbol + "</td>" +
-            "<td>" + stock.quantity + "</td>" +
-            "<td>" + stock.createdAt + "</td>" +
-            "<td>" + stock.totalPrice + "</td>" +
+            "<td>" + transaction.orderID + "</td>" +
+            "<td>" + transaction.status + "</td>" +
+            "<td>" + transaction.name + "</td>" +
+            "<td>" + transaction.symbol + "</td>" +
+            "<td>" + transaction.quantity + "</td>" +
+            "<td>" + transaction.price + "</td>" +
+            "<td>" + transaction.createdAt + "</td>" +
+            "<td>" + transaction.totalPrice + "</td>" +
             "</tr>";
     }
 

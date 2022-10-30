@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
-    <script src="js/index.js"></script>
+    <script src="js/transaction.js"></script>
     <script src="js/sidebar.js"></script>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/mainDashboard.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                         <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
                         <span class="nav_name">My Portfolio</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="transaction.html" onclick="location.href=this.href+'?'+1;return false" ; class="nav_link">
                         <i class='bx bx-folder nav_icon'></i>
                         <span class="nav_name">Transactions</span>
                     </a>
@@ -63,8 +63,8 @@
     <!--https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202#-->
 
     <div class="container">
-        <h1 style="padding-top: 50px;">Trending Stocks</h1>
-        <div id="stocks"></div>
+        <h1 style="padding-top: 50px;">My Transactions</h1>
+        <div style="padding-top: 50px;" id="myTransactions"></div>
     </div>
 
 </body>

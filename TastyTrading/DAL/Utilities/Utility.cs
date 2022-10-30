@@ -15,7 +15,8 @@ namespace TastyTrading.DAL.Utilities
          
         /* Source : https://www.codegrepper.com/profile/ege-bilecen */
 
-        /* It creates a new GUID, converts it to a base64 string, and then removes the '=' and '+' characters from the string */ 
+        /* It creates a new GUID, converts it to a base64 string, and then removes 
+        * the '=' and '+' characters from the string */ 
 
         public static string CreateUniqueString()
         {

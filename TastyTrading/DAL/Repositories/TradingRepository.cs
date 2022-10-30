@@ -100,7 +100,8 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
-        // TODO : needs code comments
+        /* It takes an id of a stock that the user wants to sell, finds the 
+         * stock in the database, and then deletes it. */       
         public async Task<bool> SellStock(int sellID)
         {
             try
@@ -195,7 +196,7 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
-        // TODO : needs code comments
+        /* It creates a transaction object and saves it to the database */
         public Task<bool> CreateTransaction(string status, int id, Portfolio order, double quantity)
         {
             try

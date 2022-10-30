@@ -9,7 +9,7 @@ namespace TastyTrading.Models
     {
         [Key]
         public int Id { get; set; }
-        public double TotalPrice { get; set; }
+        // public double TotalPrice { get; set; }
         public string Status { get; set; }
 
         public string Symbol { get; set; }
@@ -20,7 +20,7 @@ namespace TastyTrading.Models
         public double Quantity { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public int UserID { get; set; }
+        //public int UserID { get; set; }
 
         public virtual Stock Stock { get; set; }
         public virtual User User { get; set; }

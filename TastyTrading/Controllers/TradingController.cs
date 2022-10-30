@@ -82,15 +82,11 @@ namespace TastyTrading.Controllers
             return NotFound("Could not get stock");
         }
 
-<<<<<<< Updated upstream
-        public async Task<ActionResult> UpdateBuyStock(Portfolio order, int orderID)
-=======
         /* This function updates the stock in the database */
         public async Task<ActionResult> UpdateBuyStock(Portfolio order)
->>>>>>> Stashed changes
         {
 
-            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+            var checkStock = await _tradingDb.UpdateBuyStock(order);
 
             if (checkStock != null) return Ok(checkStock);
             _log.LogInformation("Stock was not updated");
@@ -98,16 +94,12 @@ namespace TastyTrading.Controllers
 
         }
 
-<<<<<<< Updated upstream
-        public async Task<ActionResult> UpdateSellStock(Portfolio order, int orderID)
-=======
         /* This function is used to update the stock quantity in the database 
          * when a user sells a stock */
         public async Task<ActionResult> UpdateSellStock(Portfolio order)
->>>>>>> Stashed changes
         {
 
-            var checkStock = await _tradingDb.UpdateBuyStock(order, orderID);
+            var checkStock = await _tradingDb.UpdateSellStock(order);
 
             if (checkStock != null) return Ok(checkStock);
             _log.LogInformation("Stock was not deleted");
@@ -126,19 +118,6 @@ namespace TastyTrading.Controllers
             return NotFound("Could not get all transactions");
         }
 
-<<<<<<< Updated upstream
-        // Usikker om vi trenger den i controlleren:
-
-        /*public async Task<ActionResult> CreateTransaction(string status, int id, Portfolio portfolio, double quantity)
-        {
-            var list = await _tradingDb.CreateTransaction(status, id, portfolio, quantity);
-
-            if (list != null) return Ok(list);
-            _log.LogInformation("Could not create a transaction");
-            return NotFound("Could not create a transaction");
-
-        }*/
-=======
         /* It gets the user from the database and returns it if it exists, 
          * otherwise it logs an error and returns a 404 */ 
         public async Task<ActionResult> GetUser()
@@ -149,6 +128,5 @@ namespace TastyTrading.Controllers
             _log.LogInformation("Could not find the user");
             return NotFound("Could not find the user");
         }
->>>>>>> Stashed changes
     }
 }

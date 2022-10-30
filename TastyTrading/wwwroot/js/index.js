@@ -1,7 +1,8 @@
 ﻿let BuyID = 1;
 
 $(function () {
-    // BuyID = window.location.search.substring(1);
+    //BuyID = window.location.search.substring(1);
+
     getAllStocks();
 });
 
@@ -17,51 +18,63 @@ function getAllStocks() {
 
 
 function formaterStocks(stocks) {
+
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>Symbol</th><th>Product Name</th><th>Price</th><th>Volume</th><th></th><th></th>" +
+        "<th>Symbol</th><th>Name</th><th>Price</th><th>Volume</th><th></th><th></th>" +
         "</tr>";
 
     for (let stock of stocks) {
         ut += "<tr>" +
             "<td>" + stock.symbol + "</td>" +
-            "<td>" + stock.product_name + "</td>" +
+            "<td>" + stock.name + "</td>" +
             "<td>" + stock.price + "</td>" +
             "<td>" + stock.volume + "</td>" +
-            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='saveStockInfo("${stock.symbol}", "${stock.product_name}", "${stock.price}")'>Buy</a></td>` +
-            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#chart' onclick='showChart("${stock.product_name}")'>Show Chart</a></td>` +
+            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='saveStockInfo("${stock.id}","${stock.symbol}", "${stock.name}", "${stock.price}")'>Buy</a></td>` +
+            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#chart' onclick='showChart("${stock.name}")'>Show Chart</a></td>` +
             "</tr>";
     }
+
     ut += "</table>";
     $("#stocks").html(ut);
 }
 
-
-function saveStockInfo(stockSymbol, stockName, stockPrice) {
+function saveStockInfo(stockID, stockSymbol, stockName, stockPrice) {
+    $("#OrdreID").val(stockID);
     $("#SSymbol").val(stockSymbol);
     $("#SName").val(stockName);
     $("#SPrice").val(stockPrice);
-    $("#SOrderID").val(BuyID);
+    $("#UserID").val(BuyID);
 }
+
 
 function buyStock() {
     const url = "/api/v1/Trading/BuyStock";
-    const newOrder = {
-        stock_Quantity: $("#quantity").val(),
-        stock_Symbol: $("#symbol").val(),
-        stock_Name: $("#name").val(),
-        stock_Price: $("#price").val(),
-        BuyID: $("#SOrderID").val()
+
+    const newStock = {
+        Id: $("#OrdreID").val(),
+        Symbol: $("#SSymbol").val(),
+        Name: $("#SName").val(),
+        Price: $("#SPrice").val()
     }
 
-    $.post(url, newOrder, function (ok) {
-        window.location.href = 'portfolio.html?' + BuyID;
-        console.log(ok)
+    const newOrder = {
+        Stock: newStock,
+        Person: $("#UserID").val(),
+        Quantity: $("#Quantity").val()
+    }
+
+    const stockID = window.location.search.substring(1);
+
+    $.post(url, (stockID, newOrder), function (ok) {
+        window.location.href = 'portfolio.html?Id=' + BuyID;
         console.log("OK")
+        console.log(newOrder);
     })
         .fail(function (feil) {
             $("#feil").html("Feil på server - prøv igjen senere");
         });
+
 }
 
 function showChart(stockName) {

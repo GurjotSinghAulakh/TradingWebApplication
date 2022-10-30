@@ -1,0 +1,332 @@
+2022-10-30T09:03:46.4702910+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:03:46.5848520+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:03:46.5939580+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:03:46.6233940+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:03:48.0836880+01:00 0HMLQ9L2LLDS8:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:06:31.9878090+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:06:32.1292040+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:06:32.1370360+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:06:32.1411580+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:06:33.5261300+01:00 0HMLQ9MK0KRGN:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:07:41.5658310+01:00 0HMLQ9MK0KRGL:00000003 [ERR] Failed executing DbCommand ("15"ms) [Parameters=["@p0='?', @p1='?' (Size = 9), @p2='?', @p3='?', @p4='?', @p5='?' (Size = 3), @p6='?', @p7='?' (Size = 4), @p8='?', @p9='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"Name\", \"OrderID\", \"Price\", \"Quantity\", \"Status\", \"StockId\", \"Symbol\", \"TotalPrice\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:07:41.7468600+01:00 0HMLQ9MK0KRGL:00000003 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:09:19.7715650+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:09:19.8552430+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:09:19.8824910+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:09:19.8985210+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:09:21.3487270+01:00 0HMLQ9O6073C9:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:10:10.5765400+01:00 0HMLQ9O6073CA:00000002 [ERR] Failed executing DbCommand ("16"ms) [Parameters=["@p0='?', @p1='?' (Size = 9), @p2='?', @p3='?', @p4='?', @p5='?' (Size = 3), @p6='?', @p7='?' (Size = 4), @p8='?', @p9='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"Name\", \"OrderID\", \"Price\", \"Quantity\", \"Status\", \"StockId\", \"Symbol\", \"TotalPrice\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:10:10.7423460+01:00 0HMLQ9O6073CA:00000002 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:13:51.6376510+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:13:51.7485080+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:13:51.7532610+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:13:51.7585140+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:13:53.5979280+01:00 0HMLQ9QN1NPEV:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:15:14.3432240+01:00 0HMLQ9QN1NPF2:00000002 [ERR] Failed executing DbCommand ("18"ms) [Parameters=["@p0='?', @p1='?' (Size = 5), @p2='?', @p3='?', @p4='?', @p5='?' (Size = 3), @p6='?', @p7='?' (Size = 4), @p8='?', @p9='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"Name\", \"OrderID\", \"Price\", \"Quantity\", \"Status\", \"StockId\", \"Symbol\", \"TotalPrice\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:18:11.5110790+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:18:11.6250710+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:18:11.6311610+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:18:11.6344100+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:18:13.1718140+01:00 0HMLQ9T4FLL7T:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:19:07.9924610+01:00 0HMLQ9T4FLL7U:00000002 [INF] Object reference not set to an instance of an object.Kan ikke lage en transaksjon!! (7e520875)
+2022-10-30T09:19:44.6684530+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:19:44.8489000+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:19:44.8629190+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:19:44.8938700+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:19:46.1709290+01:00 0HMLQ9U09Q7TU:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:21:28.5759200+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:21:28.6762510+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:21:28.6823080+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:21:28.7065140+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:21:30.2090960+01:00 0HMLQ9UV6RK8J:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:26:22.1234000+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:26:22.2621830+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:26:22.2676390+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:26:22.2917700+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:26:23.5159850+01:00 0HMLQA1MM6IK1:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:31:42.6582920+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:31:42.7427220+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:31:42.7708930+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:31:42.7964730+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:31:44.1851070+01:00 0HMLQA4M7AN6O:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:32:40.1328570+01:00 0HMLQA4M7AN6Q:00000002 [ERR] Failed executing DbCommand ("17"ms) [Parameters=["@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?' (Size = 3), @p6='?', @p7='?', @p8='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"Name\", \"OrderID\", \"Price\", \"Quantity\", \"Status\", \"StockId\", \"Symbol\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:32:40.3130050+01:00 0HMLQA4M7AN6Q:00000002 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:34:58.3268200+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:34:58.3918490+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:34:58.3967140+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:34:58.4219430+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:35:00.1103480+01:00 0HMLQA6GH8ES7:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:36:04.9908410+01:00 0HMLQA6GH8ESA:00000002 [ERR] Failed executing DbCommand ("17"ms) [Parameters=["@p0='?', @p1='?' (Size = 5), @p2='?', @p3='?' (Size = 4), @p4='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Stocks\" (\"Id\", \"Name\", \"Price\", \"Symbol\", \"Volume\")
+VALUES (@p0, @p1, @p2, @p3, @p4);" (627a98df)
+2022-10-30T09:36:05.1781460+01:00 0HMLQA6GH8ESA:00000002 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'UNIQUE constraint failed: Stocks.Id'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'UNIQUE constraint failed: Stocks.Id'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:37:22.0439420+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:37:22.2026360+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:37:22.2120550+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:37:22.2186460+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:37:23.5048750+01:00 0HMLQA7RC6N5G:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:38:01.4941320+01:00 0HMLQA7RC6N5I:00000002 [ERR] Failed executing DbCommand ("24"ms) [Parameters=["@p0='?', @p1='?', @p2='?', @p3='?' (Size = 3), @p4='?', @p5='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"OrderID\", \"Quantity\", \"Status\", \"StockId\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:38:01.6540900+01:00 0HMLQA7RC6N5I:00000002 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:40:47.3512830+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:40:47.4384540+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:40:47.4445090+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:40:47.4478800+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:40:48.7944770+01:00 0HMLQA9OHGJVJ:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:41:44.5667700+01:00 0HMLQA9OHGJVK:00000002 [ERR] Failed executing DbCommand ("31"ms) [Parameters=["@p0='?', @p1='?' (Size = 9), @p2='?', @p3='?', @p4='?', @p5='?' (Size = 3), @p6='?', @p7='?' (Size = 4), @p8='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Transactions\" (\"CreatedAt\", \"Name\", \"OrderID\", \"Price\", \"Quantity\", \"Status\", \"StockId\", \"Symbol\", \"UserID\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+SELECT \"Id\"
+FROM \"Transactions\"
+WHERE changes() = 1 AND \"rowid\" = last_insert_rowid();" (627a98df)
+2022-10-30T09:41:44.7183580+01:00 0HMLQA9OHGJVK:00000002 [ERR] An exception occurred in the database while saving changes for context type '"TastyTrading.DAL.TradingDb"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)" (170f029e)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'FOREIGN KEY constraint failed'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2022-10-30T09:43:30.7943920+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:43:30.8972560+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:43:30.9078470+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:43:30.9369760+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:43:32.0677300+01:00 0HMLQAB98U8UI:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)
+2022-10-30T09:47:11.4890830+01:00  [INF] Now listening on: "http://localhost:3275" (d826f4b8)
+2022-10-30T09:47:11.6350310+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-10-30T09:47:11.6626840+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-10-30T09:47:11.6898470+01:00  [INF] Content root path: "/Users/gurjotsinghaulakh/Github Repositories/TastyTrading/TastyTrading" (b5d60022)
+2022-10-30T09:47:13.2120870+01:00 0HMLQADB1O14Q:00000001 [WRN] Failed to determine the https port for redirect. (ca76cc21)

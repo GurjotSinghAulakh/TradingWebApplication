@@ -24,8 +24,8 @@ namespace TastyTrading.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // krever at vi importerer pakken Microsoft.EntityFrameworkCore.Proxies
-            // og legge til "virtual" på de attributtene som ønskes å lastes automatisk (lazyLoading)
+            // Requires us to import the Microsoft.EntityFrameworkCore.Proxies package
+            // And add "virtual" to the attributes that are wanted to be loaded automatically (lazyLoading)
             optionsBuilder.UseLazyLoadingProxies();
         }
     }

@@ -1,4 +1,13 @@
-﻿document.addEventListener("DOMContentLoaded", function (event) {
+﻿
+document.addEventListener("DOMContentLoaded", function (event) {
+
+    /**
+     * It shows the navbar when the toggle button is clicked
+     * @param toggleId - The id of the element that will be clicked to show the navbar
+     * @param navId - The id of the navbar
+     * @param bodyId - The id of the body element
+     * @param headerId - The id of the header element
+     */
 
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
         const toggle = document.getElementById(toggleId),
@@ -26,6 +35,11 @@
     /*===== LINK ACTIVE =====*/
     const linkColor = document.querySelectorAll('.nav_link')
 
+    /**
+     * The function removes the class 'active' from all elements with the class 'linkColor' and then
+     * adds the class 'active' to the element that was clicked
+     */
+    
     function colorLink() {
         if (linkColor) {
             linkColor.forEach(l => l.classList.remove('active'))
@@ -34,5 +48,4 @@
     }
     linkColor.forEach(l => l.addEventListener('click', colorLink))
 
-    // Your code to run since DOM is loaded and ready
 });

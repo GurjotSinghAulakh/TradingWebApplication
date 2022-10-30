@@ -12,20 +12,27 @@ using System.Linq;
 
 namespace TastyTrading.DAL.Repositories
 {
+    /* A way to tell the code coverage tool to ignore this class. */
     [ExcludeFromCodeCoverage]
+
     public class TradingRepository : ITradingRepository
     {
 
+        /* A private variable that is used to access the database. */
         private readonly TradingDb _tradingDb;
 
+        /* Used to log information to the console. */
         private readonly ILogger<TradingRepository> _log;
 
+        /* This is the constructor for the class. It is used to create an 
+         * instance of the class. */
         public TradingRepository(TradingDb tradingDb, ILogger<TradingRepository> log)
         {
             _tradingDb = tradingDb;
             _log = log;
         }
 
+       /* It returns a list of portfolios from the database */
         public async Task<List<Portfolio>> GetPortfolio()
         {
             try
@@ -39,6 +46,9 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        
+        /* It takes a customer order, creates a new order, saves it to the 
+         * database, and then creates a */
         public async Task<bool> BuyStock(Portfolio customerOrder)
         {
             try
@@ -58,19 +68,19 @@ namespace TastyTrading.DAL.Repositories
                 Console.WriteLine(newOrder);
                 Console.WriteLine(customerOrder.Quantity);
 
-                // TODO : Lage en transaksjon
+                // TODO : Create a transaction
                 await CreateTransaction("Buy", newOrder.Id, newOrder, customerOrder.Quantity);
                 return true;
             }
 
-
             catch (Exception e)
             {
-                _log.LogInformation(e.Message + "Kjøp er ikke vellykket!! ");
+                _log.LogInformation(e.Message + "Purchase is not successful!!");
                 return false;
             }
         }
 
+        /* It returns a list of all the stocks in the database */ 
         public async Task<List<Stock>> GetStocks()
         {
             try
@@ -95,6 +105,7 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        // TODO : needs code comments
         public async Task<bool> SellStock(int sellID)
         {
             try
@@ -118,6 +129,7 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        /* It returns a portfolio object from the database based on the orderID */
         public async Task<Portfolio> GetOneOrder(int orderID)
         {
             try
@@ -130,7 +142,9 @@ namespace TastyTrading.DAL.Repositories
                 return null;
             }
         }
-
+        
+        /* The function takes in a Portfolio object, and updates the quantity 
+         * of the stock in the database */
         public async Task<bool> UpdateBuyStock(Portfolio order)
         {
             try
@@ -142,17 +156,15 @@ namespace TastyTrading.DAL.Repositories
 
                 await _tradingDb.SaveChangesAsync();
             }
-
-
             catch (Exception e)
             {
-                _log.LogInformation(e.Message + "Aksjene er ikke oppdatert ");
+                _log.LogInformation(e.Message + "The shares have not been updated!");
                 return false;
             }
-
             return true;
         }
 
+        /* It updates the quantity of a stock in the portfolio */
         public async Task<bool> UpdateSellStock(Portfolio order)
         {
             try
@@ -180,11 +192,12 @@ namespace TastyTrading.DAL.Repositories
 
             catch (Exception e)
             {
-                _log.LogInformation(e.Message + "Aksjene kan ikke selges ");
+                _log.LogInformation(e.Message + "The shares cannot be sold!");
                 return false;
             }
         }
 
+        // TODO : needs code comments
         public Task<bool> CreateTransaction(string status, int id, Portfolio order, double quantity)
         {
             try
@@ -215,6 +228,8 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        /* It returns a list of transactions, each transaction containing the 
+         * stock name, price, */
         public async Task<List<Transaction>> GetAllTransactions()
         {
             try
@@ -238,6 +253,7 @@ namespace TastyTrading.DAL.Repositories
             }
         }
 
+        /* It gets a user from the database and returns it */
         public async Task<User> GetUser()
         {
             try

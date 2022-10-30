@@ -45,7 +45,7 @@ namespace TastyTrading.Controllers
         {
             var product = await _tradingDb.BuyStock(customerOrder);
 
-            if (product != null) return Ok(product);
+            if (product == true) return Ok(product);
             _log.LogInformation("Product was not found");
             return NotFound("Product was not found");
         }
@@ -88,7 +88,7 @@ namespace TastyTrading.Controllers
 
             var checkStock = await _tradingDb.UpdateBuyStock(order);
 
-            if (checkStock != null) return Ok(checkStock);
+            if (checkStock == true) return Ok(checkStock);
             _log.LogInformation("Stock was not updated");
             return NotFound("Stock was not updated");
 
@@ -101,7 +101,7 @@ namespace TastyTrading.Controllers
 
             var checkStock = await _tradingDb.UpdateSellStock(order);
 
-            if (checkStock != null) return Ok(checkStock);
+            if (checkStock == true) return Ok(checkStock);
             _log.LogInformation("Stock was not deleted");
             return NotFound("Stock was not deleted");
 

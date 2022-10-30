@@ -1,12 +1,15 @@
 ﻿let BuyID = 1;
 
+/* This is a jQuery function that calls the function getAllStocks() when the page is loaded. */
 $(function () {
-    //BuyID = window.location.search.substring(1);
-
     getAllStocks();
 });
 
 
+/**
+ * The function getAllStocks() is a jQuery function that gets the stocks from the server and then calls
+ * the function formaterStocks(stocks) to format the stocks
+ */
 function getAllStocks() {
     $.get("/api/v1/Trading/GetStocks", function (stocks) {
         formaterStocks(stocks);
@@ -16,6 +19,11 @@ function getAllStocks() {
         });
 }
 
+
+/**
+ * It takes a list of stocks and formats them into a table
+ * @param stocks - the array of stocks to be displayed
+ */
 
 function formaterStocks(stocks) {
 
@@ -39,6 +47,15 @@ function formaterStocks(stocks) {
     $("#stocks").html(ut);
 }
 
+/**
+ * It takes the stockID, stockSymbol, stockName, and stockPrice and puts them into the hidden fields in
+ * the form.
+ * @param stockID - The ID of the stock
+ * @param stockSymbol - The stock symbol
+ * @param stockName - The name of the stock
+ * @param stockPrice - The current price of the stock
+ */
+
 function saveStockInfo(stockID, stockSymbol, stockName, stockPrice) {
     $("#OrdreID").val(stockID);
     $("#SSymbol").val(stockSymbol);
@@ -48,6 +65,9 @@ function saveStockInfo(stockID, stockSymbol, stockName, stockPrice) {
 }
 
 
+/**
+ * It takes the values from the input fields and sends them to the API
+ */
 function buyStock() {
     const url = "/api/v1/Trading/BuyStock";
 
@@ -74,9 +94,13 @@ function buyStock() {
         .fail(function (feil) {
             $("#feil").html("Feil på server - prøv igjen senere");
         });
-
 }
 
+/**
+ * It creates a new chart object, and then it sets the type of chart to line, and then it sets the data
+ * for the chart, and then it sets the options for the chart
+ * @param stockName - The name of the stock you want to display
+ */
 function showChart(stockName) {
     new Chart("myChart", {
         type: "line",

@@ -1,12 +1,14 @@
-﻿$(function () {
+﻿let sellId = 1;
+
+/* This is a jQuery function that runs the getMyPortfolio function when the page is loaded. */
+$(function () {
     getMyPortfolio();
 });
 
-let sellId = 1;
-
-
+/**
+ * It gets the portfolio from the server and then formats it.
+ */
 function getMyPortfolio() {
-    /*let PId = window.location.search.substring(1);*/
     const url = "/api/v1/Trading/GetPortfolio";
     $.get(url, function (myStocks) {
         formaterStocks(myStocks);
@@ -16,6 +18,10 @@ function getMyPortfolio() {
         });
 }
 
+/**
+ * It takes an array of stocks and formats them into a table
+ * @param myStocks - the array of stocks that you want to display
+ */
 function formaterStocks(myStocks) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
@@ -28,7 +34,7 @@ function formaterStocks(myStocks) {
             "<td>" + myStocks[i].name + "</td>" +
             "<td>" + myStocks[i].price + "</td>" +
             "<td>" + myStocks[i].quantity + "</td>" +
-            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='saveStockInfo("${myStocks[i].id}","${myStocks[i].symbol}", "${myStocks[i].name}", "${myStocks[i].price}", "${myStocks[i].quantity}")'>Update Stock</a></td>` +
+            `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop' onclick='saveStockInfo("${myStocks[i].id}")'>Update Stock</a></td>` +
             `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#chart' onclick='showChart("${myStocks[i].name}")'>Show Chart</a></td>` +
             `<td> <a type='button' class='btn btn-primary' data-bs-toggle='modal' onclick='sellStock("${myStocks[i].id}")'>Sell</a></td>` +
             "</tr>"
@@ -37,7 +43,12 @@ function formaterStocks(myStocks) {
     $("#myPortfolio").html(ut);
 }
 
-function saveStockInfo(orderID, stockSymbol, stockName, stockPrice, maxQuantity) {
+/**
+ * It takes an orderID as a parameter, and then uses that orderID to get the order from the database,
+ * and then fills the form with the order's information
+ * @param orderID - The ID of the order
+ */
+function saveStockInfo(orderID) {
     $("#OrdreID").val(orderID);
 
     const url = "/api/v1/Trading/GetOneOrder?orderID=" + orderID;
@@ -54,6 +65,9 @@ function saveStockInfo(orderID, stockSymbol, stockName, stockPrice, maxQuantity)
         });
 }
 
+/**
+ * It takes the values from the input fields and sends them to the server
+ */
 function updateBuyStock() {
     const url = "/api/v1/Trading/UpdateBuyStock";
 
@@ -75,6 +89,9 @@ function updateBuyStock() {
 }
 
 
+/**
+ * It takes the values from the input fields and sends them to the server
+ */
 function updateSellStock() {
     const url = "/api/v1/Trading/UpdateSellStock";
 
@@ -95,6 +112,10 @@ function updateSellStock() {
         });
 }
 
+/**
+ * The function takes the ID of the stock you want to sell, and sends it to the server
+ * @param sellID - The ID of the stock you want to sell.
+ */
 function sellStock(sellID) {
     console.log("ID er : " + sellID)
     const url = "/api/v1/Trading/SellStock";
@@ -112,6 +133,11 @@ function sellStock(sellID) {
 
 }
 
+/**
+ * It creates a new chart object, and then it sets the type of chart to line, and then it sets the data
+ * for the chart, and then it sets the options for the chart
+ * @param stockName - The name of the stock you want to display
+ */
 function showChart(stockName) {
     new Chart("myChart", {
         type: "line",

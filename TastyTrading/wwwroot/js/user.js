@@ -1,11 +1,14 @@
-﻿let id = 1;
+﻿/* A variable that is used to identify the user. */
+let id = 1;
 
+/* Calling the getUser function when the page loads. */
 $(function () {
     getUser();
 });
 
-
-
+/**
+ * The function gets the user from the server and then formats the stocks
+ */
 function getUser() {
     $.get("/api/v1/Trading/GetUser", function (user) {
         formaterStocks(user);
@@ -15,7 +18,10 @@ function getUser() {
         });
 }
 
-
+/**
+ * It takes a user object as input and returns a string containing a table with the user's information
+ * @param user - The user object that is returned from the server.
+ */
 function formaterStocks(user) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +

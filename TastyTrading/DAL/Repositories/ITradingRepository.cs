@@ -7,6 +7,7 @@ using TastyTrading.Models;
 
 namespace TastyTrading.DAL.Repositories
 {
+    /* An interface. */
     public interface ITradingRepository
     {
         Task<List<Portfolio>> GetPortfolio();
@@ -18,8 +19,5 @@ namespace TastyTrading.DAL.Repositories
         Task<bool> UpdateSellStock(Portfolio order);
         Task<List<Transaction>> GetAllTransactions();
         Task<User> GetUser();
-
-        // Usikker om vi trenger den i controlleren:
-        //Task<bool> CreateTransaction(string status, int id, Portfolio portfolio, double quantity);
     }
 }

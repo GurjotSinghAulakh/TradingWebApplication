@@ -14,7 +14,6 @@ namespace TastyTrading.Models
         [Key]
         public int Id { get; set; }
 
-        // These will come from the lazy loading.
         public string Symbol { get; set; }
         public double Quantity { get; set; }
         public string Name { get; set; }

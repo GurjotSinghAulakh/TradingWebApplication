@@ -10,9 +10,12 @@ namespace TastyTrading.DAL.Utilities
     public static class Utility
     {
         /**
-         * Method for generating random hex number for customer and ticket reference
+         * Method for generating a base64 string for orderID 
          */
+         
         /* Source : https://www.codegrepper.com/profile/ege-bilecen */
+
+        /* It creates a new GUID, converts it to a base64 string, and then removes the '=' and '+' characters from the string */ 
 
         public static string CreateUniqueString()
         {

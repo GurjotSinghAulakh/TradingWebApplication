@@ -18,8 +18,7 @@
     "TastyTrading": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "index.html",
-      "applicationUrl": "http://localhost:3275/",
+      "applicationUrl": "http://localhost:3275",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

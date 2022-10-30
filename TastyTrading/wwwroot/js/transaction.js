@@ -1,9 +1,13 @@
-﻿$(function () {
-    //BuyID = window.location.search.substring(1);
+﻿/* The code is using jQuery to call the getAllTransactions() function when the page loads. */
+$(function () {
     getAllTransactions();
 });
 
 
+/**
+ * The function getAllStocks() is a function that uses the get method to get the data from the
+ * api/v1/Trading/GetAllTransactions endpoint. The data is then passed to the formaterStocks() function
+ */
 function getAllStocks() {
     $.get("/api/v1/Trading/GetAllTransactions", function (stocks) {
         console.log(stocks)
@@ -14,6 +18,11 @@ function getAllStocks() {
         });
 }
 
+
+/**
+ * It takes an array of stocks and returns a table with the stocks in it
+ * @param stocks - The array of stocks that you want to display.
+ */
 
 function formaterStocks(stocks) {
 
